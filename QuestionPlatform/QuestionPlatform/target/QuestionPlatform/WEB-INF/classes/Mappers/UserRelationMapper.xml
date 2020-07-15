@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="huskysir.dao.UserRelationDao">
+    <!-- 查询某用户关注的所有用户 -->
+    <select id="findAllOfToUser" parameterType="java.lang.Integer" resultType="User">
+        SELECT u.* FROM (SELECT to_user_id FROM user_relation_user WHERE from_user_id=#{user_id}) AS uu
+        INNER JOIN user u ON u.user_id = uu.to_user_id
+    </select>
+
+    <!-- 查询某用户关注的用户数(输入用户编号) -->
+    <select id="findTotalOfToUser" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT COUNT(u.user_id) FROM (SELECT to_user_id FROM user_relation_user WHERE from_user_id=#{user_id}) AS uu
+        INNER JOIN user u ON u.user_id = uu.to_user_id
+    </select>
+
+    <!-- 查询关注某用户的所有用户(输入用户编号) -->
+    <select id="findAllOfFromUser" parameterType="java.lang.Integer" resultType="User">
+        SELECT u.* FROM (SELECT from_user_id FROM user_relation_user WHERE to_user_id=#{user_id}) AS uu
+        INNER JOIN user u ON u.user_id = uu.from_user_id
+    </select>
+    <!-- 查询关注某用户的用户数（输入用户编号） -->
+    <select id="findTotalOfFromUser" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT COUNT(u.user_id) FROM (SELECT from_user_id FROM user_relation_user WHERE to_user_id=#{user_id}) AS uu
+        INNER JOIN user u ON u.user_id = uu.from_user_id
+    </select>
+
+    <!-- 查询某用户关注的所有问题(输入用户编号) -->
+    <select id="findAllOfToQuestion" parameterType="java.lang.Integer" resultType="Question">
+        SELECT q.* FROM (SELECT to_question_id FROM user_relation_question WHERE from_user_id=#{user_id}) AS uq
+        INNER JOIN question q ON q.question_id = uq.to_question_id
+    </select>
+
+    <!-- 查询某用户关注的问题数(输入用户编号) -->
+    <select id="findTotalOfToQuestion" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT COUNT(q.question_id) FROM (SELECT to_question_id FROM user_relation_question WHERE from_user_id=#{user_id}) AS uq
+        INNER JOIN question q ON q.question_id = uq.to_question_id
+    </select>
+
+    <!-- 查询某用户赞同的所有回答(输入用户编号) -->
+    <select id="findAllOfToAnswer" parameterType="java.lang.Integer" resultType="Answer">
+        SELECT a.* FROM (SELECT to_answer_id FROM user_relation_answer WHERE from_user_id=#{user_id}) AS ua
+        INNER JOIN answer a ON a.answer_id = ua.to_answer_id
+    </select>
+
+    <!-- 查询某用户赞同的回答数(输入用户编号) -->
+    <select id="findTotalOfToAnswer" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT COUNT(a.answer_id) FROM (SELECT to_answer_id FROM user_relation_answer WHERE from_user_id=#{user_id}) AS ua
+        INNER JOIN answer a ON a.answer_id = ua.to_answer_id
+    </select>
+
+    <!-- 新增某用户关注某用户 -->
+    <insert id="saveUserFollowUser" parameterType="java.lang.Integer" >
+        INSERT INTO user_relation_user (from_user_id,to_user_id)
+        VALUES (#{from_user_id},#{to_user_id})
+    </insert>
+
+    <!-- 删除某用户关注某用户 -->
+    <delete id="deleteUserFollowUser" parameterType="java.lang.Integer" >
+        DELETE FROM user_relation_user WHERE
+        from_user_id = #{from_user_id} AND to_user_id = #{to_user_id}
+    </delete>
+
+    <!-- 新增某用户关注某问题 -->
+    <insert id="saveUserFollowQuestion" parameterType="java.lang.Integer" >
+        INSERT INTO user_relation_question (from_user_id,to_question_id)
+        VALUES (#{from_user_id},#{to_question_id})
+    </insert>
+
+    <!-- 删除某用户关注某问题 -->
+    <delete id="deleteUserFollowQuestion" parameterType="java.lang.Integer" >
+        DELETE FROM user_relation_question WHERE
+        from_user_id = #{from_user_id} AND to_question_id = #{to_question_id}
+    </delete>
+
+    <!-- 新增某用户支持某回答 -->
+    <insert id="saveUserSupportAnswer" parameterType="java.lang.Integer" >
+        INSERT INTO user_relation_answer (from_user_id,to_answer_id)
+        VALUES (#{from_user_id},#{to_answer_id})
+    </insert>
+
+    <!-- 删除某用户支持某回答 -->
+    <delete id="deleteUserSupportAnswer" parameterType="java.lang.Integer" >
+        DELETE FROM user_relation_answer WHERE
+        from_user_id = #{from_user_id} AND to_answer_id = #{to_answer_id}
+    </delete>
+
+</mapper>
