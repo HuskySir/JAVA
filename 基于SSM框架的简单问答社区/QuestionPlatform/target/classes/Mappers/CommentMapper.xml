@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="huskysir.dao.CommentDao">
+
+    <!-- 根据评论编号查询评论 -->
+    <select id="findCommentById" parameterType="java.lang.Integer" resultType="Comment">
+        SELECT * FROM comment WHERE comment_id = #{comment_id}
+    </select>
+
+    <!-- 根据用户编号查询评论 -->
+    <select id="findCommentByUserId" parameterType="java.lang.Integer" resultType="Comment">
+        SELECT * FROM comment WHERE comment_user_id = #{user_id}
+    </select>
+
+    <!-- 根据回答编号查询评论 -->
+    <select id="findCommentByAnswerId" parameterType="java.lang.Integer" resultType="Comment">
+        SELECT * FROM comment WHERE comment_answer_id = #{answer_id}
+    </select>
+
+    <!-- 查询某一评论的下级评论（输入该评论编号） -->
+    <select id="findNextCommentByCommentId" parameterType="java.lang.Integer" resultType="Comment">
+        SELECT * FROM comment WHERE comment_last_id = #{comment_id}
+    </select>
+
+    <!-- 新增问题:问题的提问者用户编号、问题状态为必填项 -->
+    <insert id="saveComment" parameterType="Comment">
+        INSERT INTO comment(comment_id,comment_user_id,comment_answer_id,comment_last_id,comment_content,comment_time)
+        VALUES(#{comment_id},#{comment_user_id},#{comment_answer_id},#{comment_last_id},#{comment_content},#{comment_time})
+    </insert>
+
+    <!-- 更新问题:问题编号、问题的提问者用户编号、问题状态为必填项 -->
+    <update id="updateComment" parameterType="Comment">
+        UPDATE comment SET comment_user_id=#{comment_user_id},comment_answer_id=#{comment_answer_id},
+        comment_last_id=#{comment_last_id},comment_content=#{comment_content},comment_time=#{comment_time}
+        WHERE comment_id=#{comment_id}
+    </update>
+
+    <!-- 删除问题 -->
+    <delete id="deleteComment" parameterType="java.lang.Integer">
+        DELETE FROM comment WHERE comment_id=#{comment_id}
+    </delete>
+
+</mapper>
