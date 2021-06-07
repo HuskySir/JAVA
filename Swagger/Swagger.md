@@ -114,7 +114,7 @@ private ApiInfo apiInfo(){
 
 http://localhost:8080/swagger-ui.html
 
-![](/pictures/2-1.png)
+![](./pictures/2-1.png)
 
 groupName可以进行分组以区分后端开发者，如果有多个后端开发者，可以在Swagger2Config类里写多个Docket对象然后通过@Bean注入，不同的Docket对象代表不同的分组
 
@@ -427,11 +427,11 @@ public CommonResult updatePassword(
 
 1.@ApiModel与@ApiModelProperty效果
 
-![](/pictures/3_1.png)
+![](./pictures/3_1.png)
 
 2.@ApiOperation效果
 
-![](/pictures/3_2.png)
+![](./pictures/3_2.png)
 
 ## 四、导出swagger接口文档
 
@@ -490,7 +490,7 @@ public void generateMarkdownDocs() throws Exception {
 
 此时在src/docs/markdown/generated目录下就会生成definitions.md、overview.md、paths.md、security.md文件，即生成的markdown文件
 
-![](/pictures/4_1.png)
+![](./pictures/4_1.png)
 
 generateMarkdownDocsToFile()
 
@@ -519,7 +519,7 @@ public void generateMarkdownDocsToFile() throws Exception {
 
 此时在src/docs/markdown/generated目录下就会生成all.md文件，即生成的markdown文件
 
-![](/pictures/4_2.png)
+![](./pictures/4_2.png)
 
 **注意：**
 
@@ -532,4 +532,4 @@ public void generateMarkdownDocsToFile() throws Exception {
 
 all.md
 
-![](/pictures/4_3.png)
+![](./pictures/4_3.png)
