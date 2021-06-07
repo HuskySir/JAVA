@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+</head>
+<body>
+<form th:action="@{/student}" method="post">
+    <div>
+        <label>学号</label>
+        <input name="id">
+    </div>
+    <div>
+        <label>姓名</label>
+        <input name="name">
+    </div>
+    <div>
+        <label>成绩</label>
+        <input name="score">
+    </div>
+    <div>
+        <label>籍贯</label>
+        <input name="birthplace">
+    </div>
+    <div>
+        <label>生日</label>
+        <input name="birthday" type="date">
+    </div>
+    <button type="submit" th:text="添加"></button>
+</form>
+</body>
+</html>

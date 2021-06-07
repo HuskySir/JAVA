@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo3_dao.dao.StudentDao">
+
+    <!-- 新增学生 -->
+    <insert id="AddStudent">
+        INSERT INTO student(id,name,score,birthplace,birthday) VALUES (#{id},#{name},#{score},#{birthplace},#{birthday})
+    </insert>
+
+    <!-- 删除学生 -->
+    <delete id="DeleteStudentById">
+        DELETE FROM student WHERE id=#{id}
+    </delete>
+
+    <!-- 更新学生 -->
+    <update id="UpdateStudent">
+        UPDATE student SET name=#{name},score=#{score},birthplace=#{birthplace},birthday=#{birthday} WHERE id=#{id}
+    </update>
+
+    <!-- 查询某个学生 -->
+    <select id="FindStudentById" resultType="com.example.demo3_dao.domain.Student">
+        SELECT * FROM student WHERE id=#{id}
+    </select>
+
+    <!-- 查询所有学生 -->
+    <select id="FindAllStudent" resultType="com.example.demo3_dao.domain.Student">
+        SELECT * FROM student
+    </select>
+
+</mapper>
