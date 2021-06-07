@@ -1238,7 +1238,7 @@ public class TestPing {
 
 控制台可查看连接状态：
 
-![](/Images/6_1.png)
+![](./Images/6_1.png)
 
 #### (1)TestKey
 
@@ -1758,7 +1758,7 @@ class SpringbootRedisApplicationTests {
 
 测试结果
 
-![](/Images/7_1.png)
+![](./Images/7_1.png)
 
 ### 2、自定义配置
 
@@ -2509,7 +2509,7 @@ Redis是内存数据库，如果不将内存中的数据库状态保存到磁盘
 
 RDB持久化是指在指定的时间间隔内将内存中的数据集快照写入磁盘，实际操作过程是fork一个子进程，先将数据集写入临时文件，写入成功后，再替换之前的文件，用二进制压缩存储。默认采用RDB，默认保存的文件名为dump.rdb
 
-![](/Images/8_1.png)
+![](./Images/8_1.png)
 
 > RDB的优点
 
@@ -2615,7 +2615,7 @@ dir ./		#RDB文件目录
 
 AOF持久化以日志的形式记录服务器所处理的每一个写、删除操作，查询操作不会记录，以文本的方式记录，可以打开文件看到详细的操作记录。默认的保存文件名为appendonly.aof
 
-![](/Images/8_2.png)
+![](./Images/8_2.png)
 
 > AOF的优点
 
@@ -2782,15 +2782,15 @@ Redis客户端可以订阅任意数量的频道
 
 消息发送者	频道	消息订阅者
 
-![](/Images/9_1.png)
+![](./Images/9_1.png)
 
 下图展示了频道channel1，以及订阅这个频道的三个客户端——client2、client5、和client1之间的关系
 
-![](/Images/9_2.png)
+![](./Images/9_2.png)
 
 当有新消息通过PUBLISH命令发送给频道channel1时，这个消息就会被发送给订阅它的三个客户端
 
-![](/Images/9_3.png)
+![](./Images/9_3.png)
 
 ### 2、常用命令
 
@@ -2886,17 +2886,17 @@ pub/sub从字面上理解就是发布(Publish)与订阅(subscribe)，在Redis中
 
 电商网站上的商品，一般都是一次上传，无数次浏览的，即”多读少写“，此场景可以采用如下架构
 
-![](/Images/10_1.png)
+![](./Images/10_1.png)
 
 ### 3、环境准备
 
 (1) 在redis目录下新建redis.6380.conf、redis.6381.conf、redis.6382.conf三个文件及logs文件夹，我的redis目录为(E:\Environment\Redis-x64-3.2.100)，
 
-![](/Images/10_2.png)
+![](./Images/10_2.png)
 
 (2) 在logs目录下新建3个端口对应的log文件，日志内容为空
 
-![](/Images/10_3.png)
+![](./Images/10_3.png)
 
 (3) 修改配置文件(redis.6380.conf、redis.6381.conf、redis.6382.conf)对应的信息,此处以redis.6380.conf为例
 
@@ -2928,7 +2928,7 @@ E:\Environment\Redis-x64-3.2.100>redis-server.exe --service-install redis.6382.c
 
 运行成功后查看服务列表是否安装成功，并手动开启服务
 
-![](/Images/10_4.png)
+![](./Images/10_4.png)
 
 (5) 打开3个cmd控制台进入到redis目录下，并分别连接redis的6380、6381、6382端口服务
 
@@ -3058,7 +3058,7 @@ master接到命令，启动后台的存盘进程，同时收集所有接收到�
 
 哨兵模式能够后台监控主机是否故障，如果故障了根据投票数自动将从库转为主库。哨兵模式是一种特殊的模式，首先Redis提供了哨兵的命令，哨兵是一个独立的进程，作为进程它会独立运行。**哨兵通过发送命令，等待Redis服务器响应，从而监控运行的多个Redis实例**
 
-![](/Images/11_1.png)
+![](./Images/11_1.png)
 
 此处的哨兵有2个作用
 
@@ -3067,7 +3067,7 @@ master接到命令，启动后台的存盘进程，同时收集所有接收到�
 
 然而一个哨兵进程对Redis服务器进行监控，可能会出现问题，为此，可配置多个哨兵进行监控。各个哨兵之间还会进行监控，这样就形成了多哨兵模式
 
-![](/Images/11_2.png)
+![](./Images/11_2.png)
 
 假设主服务器宕机，哨兵1首先检测到这个结果，系统并不会马上进行failover过程，仅仅是哨兵1主观的认为主服务器不可用，这个现象称为**主观下线**。当后面的哨兵也检测到主服务器不可用，并且数量达到一定值时，那么哨兵之间就会进行一次投票，投票的结果由一个哨兵发起，进行failover(故障转移)操作。切换成功后，就会通过发布订阅模式，让各个哨兵把自己监控的从服务器实现切换主机，这个过程称为**客观下线**
 
@@ -3094,7 +3094,7 @@ sentinel failover-timeout mymaster 15000
 E:\Environment\Redis-x64-3.2.100>redis-server --service-install sentinel.conf --sentinel --service-name redis-sentinel --port 26379
 ```
 
-![](/Images/11_3.png)
+![](./Images/11_3.png)
 
 (3) 连接端口服务
 
@@ -3354,13 +3354,13 @@ sentinel failover-timeout mymaster 180000  
 
 布隆过滤器是一种数据结构，对所有可能查询的参数以hash形式存储，在控制层先进行校验，不符合则丢弃，从而避免了对底层存储系统的压力
 
-![](/Images/12_1.png)
+![](./Images/12_1.png)
 
 > 缓存空对象
 
 当存储层不命中后，即使返回的空对象也将其缓存起来，同时会设置一个过期时间，之后再访问这个数据将会从缓存中获取，保护了后端数据源
 
-![](/Images/12_2.png)
+![](./Images/12_2.png)
 
 但是这种方法会存在两个问题：
 
@@ -3391,7 +3391,7 @@ sentinel failover-timeout mymaster 180000  
 
 缓存雪崩是指在某个时间段，缓存集中过期失效，Redis宕机
 
-![](/Images/12_3.png)
+![](./Images/12_3.png)
 
 (2) 解决方案
 
