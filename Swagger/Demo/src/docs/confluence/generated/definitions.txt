@@ -1,0 +1,16 @@
+
+h2. 定义 {anchor:definitions}
+
+h3. Student {anchor:student}
+用户实体类
+
+
+||名称||说明||类型||
+|*birthday*\\ \\ _可选_||生日\\ \\ *样例* : {noformat}"string"{noformat}||string (date-time)|
+|*birthplace*\\ \\ _可选_||籍贯\\ \\ *样例* : {noformat}"string"{noformat}||string|
+|*id*\\ \\ _可选_||学号\\ \\ *样例* : {noformat}0{noformat}||integer (int32)|
+|*name*\\ \\ _可选_||姓名\\ \\ *样例* : {noformat}"string"{noformat}||string|
+|*score*\\ \\ _可选_||成绩\\ \\ *样例* : {noformat}0{noformat}||integer (int32)|
+
+
+

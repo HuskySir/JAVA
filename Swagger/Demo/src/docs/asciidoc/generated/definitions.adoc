@@ -1,0 +1,31 @@
+
+[[_definitions]]
+== 定义
+
+[[_student]]
+=== Student
+用户实体类
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**birthday** +
+__可选__|生日 +
+**样例** : `"string"`|string (date-time)
+|**birthplace** +
+__可选__|籍贯 +
+**样例** : `"string"`|string
+|**id** +
+__可选__|学号 +
+**样例** : `0`|integer (int32)
+|**name** +
+__可选__|姓名 +
+**样例** : `"string"`|string
+|**score** +
+__可选__|成绩 +
+**样例** : `0`|integer (int32)
+|===
+
+
+

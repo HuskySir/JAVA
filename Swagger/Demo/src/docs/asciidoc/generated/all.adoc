@@ -1,0 +1,352 @@
+= Swagger2
+
+
+[[_overview]]
+== 概览
+RestFul API接口
+
+
+=== 版本信息
+[%hardbreaks]
+__版本__ : 1.0
+
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : localhost:8080
+__基础路径__ : /
+
+
+=== 标签
+
+* student-controller : Student Controller
+
+
+
+
+[[_paths]]
+== 资源
+
+[[_student-controller_resource]]
+=== Student-controller
+Student Controller
+
+
+[[_addstudentusingpost]]
+==== 添加学生信息
+....
+POST /student
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**birthday** +
+__可选__|生日|string (date-time)
+|**Query**|**birthplace** +
+__可选__|籍贯|string
+|**Query**|**id** +
+__可选__|学号|integer (int32)
+|**Query**|**name** +
+__可选__|姓名|string
+|**Query**|**score** +
+__可选__|成绩|integer (int32)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|无内容
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/student
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "birthday" : "string",
+  "birthplace" : "string",
+  "id" : 0,
+  "name" : "string",
+  "score" : 0
+}
+----
+
+
+[[_updatestudentusingput]]
+==== 修改学生信息
+....
+PUT /student
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**birthday** +
+__可选__|生日|string (date-time)
+|**Query**|**birthplace** +
+__可选__|籍贯|string
+|**Query**|**id** +
+__可选__|学号|integer (int32)
+|**Query**|**name** +
+__可选__|姓名|string
+|**Query**|**score** +
+__可选__|成绩|integer (int32)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|无内容
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/student
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "birthday" : "string",
+  "birthplace" : "string",
+  "id" : 0,
+  "name" : "string",
+  "score" : 0
+}
+----
+
+
+[[_findstudentbyidusingget]]
+==== 查询单个学生信息
+....
+GET /student/{id}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**id** +
+__必填__|id|integer (int32)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_student,Student>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/student/0
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "birthday" : "string",
+  "birthplace" : "string",
+  "id" : 0,
+  "name" : "string",
+  "score" : 0
+}
+----
+
+
+[[_deletestudentbyidusingdelete]]
+==== 删除学生信息
+....
+DELETE /student/{id}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**id** +
+__必填__|id|integer (int32)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|无内容
+|**204**|No Content|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/student/0
+----
+
+
+[[_findallstudentusingget]]
+==== 查询所有学生信息
+....
+GET /students
+....
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< <<_student,Student>> > array
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/students
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+[ {
+  "birthday" : "string",
+  "birthplace" : "string",
+  "id" : 0,
+  "name" : "string",
+  "score" : 0
+} ]
+----
+
+
+
+
+[[_definitions]]
+== 定义
+
+[[_student]]
+=== Student
+用户实体类
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**birthday** +
+__可选__|生日 +
+**样例** : `"string"`|string (date-time)
+|**birthplace** +
+__可选__|籍贯 +
+**样例** : `"string"`|string
+|**id** +
+__可选__|学号 +
+**样例** : `0`|integer (int32)
+|**name** +
+__可选__|姓名 +
+**样例** : `"string"`|string
+|**score** +
+__可选__|成绩 +
+**样例** : `0`|integer (int32)
+|===
+
+
+
+
+

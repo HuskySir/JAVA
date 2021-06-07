@@ -1,0 +1,25 @@
+= Swagger2
+
+
+[[_overview]]
+== 概览
+RestFul API接口
+
+
+=== 版本信息
+[%hardbreaks]
+__版本__ : 1.0
+
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : localhost:8080
+__基础路径__ : /
+
+
+=== 标签
+
+* student-controller : Student Controller
+
+
+

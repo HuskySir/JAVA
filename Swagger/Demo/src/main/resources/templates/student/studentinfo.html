@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+</head>
+<body>
+    <!-- 添加学生页面：student==null input不显示内容
+         修改学生页面：student!=null input显示内容 -->
+    <form th:action="@{/student}" method="post">
+        <!-- 发送put请求方式修改学生信息 -->
+        <!--
+        1、SpringMVC中配置HiddenHttpMethodFilter；（springboot自动配置好）
+        2、页面创建一个post表单
+        3、创建一个input项，name=“_method";值就是需要指定的请求方式
+        -->
+        <input type="hidden" name="_method" value="put" th:if="${student!=null}">
+        <div>
+            <label>学号</label>
+            <input name="id" th:value="${student!=null}?${student.getId()}" th:readonly="${student!=null}">
+        </div>
+        <div>
+            <label>姓名</label>
+            <input name="name" th:value="${student!=null}?${student.getName()}">
+        </div>
+        <div>
+            <label>成绩</label>
+            <input name="score" th:value="${student!=null}?${student.getScore()}">
+        </div>
+        <div>
+            <label>籍贯</label>
+            <input name="birthplace" th:value="${student!=null}?${student.getBirthplace()}">
+        </div>
+        <div>
+            <label>生日</label>
+            <input name="birthday" type="date" th:value="${student!=null}?${#dates.format(student.getBirthday(),'yyyy-MM-dd')}">
+        </div>
+        <button type="submit" th:text="${student!=null}?'修改':'添加'"></button>
+    </form>
+</body>
+</html>

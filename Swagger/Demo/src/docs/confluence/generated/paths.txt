@@ -1,0 +1,244 @@
+
+h2. 资源 {anchor:paths}
+
+h3. Student-controller {anchor:student-controller_resource}
+Student Controller
+
+
+h4. 添加学生信息 {anchor:addstudentusingpost}
+{noformat}
+POST /student
+{noformat}
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Query*|*birthday*\\ \\ _可选_||生日||string (date-time)|
+|*Query*|*birthplace*\\ \\ _可选_||籍贯||string|
+|*Query*|*id*\\ \\ _可选_||学号||integer (int32)|
+|*Query*|*name*\\ \\ _可选_||姓名||string|
+|*Query*|*score*\\ \\ _可选_||成绩||integer (int32)|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||无内容|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/student
+{code}
+
+
+h6. 请求 query
+{code:language=json}
+{
+  "birthday" : "string",
+  "birthplace" : "string",
+  "id" : 0,
+  "name" : "string",
+  "score" : 0
+}
+{code}
+
+
+h4. 修改学生信息 {anchor:updatestudentusingput}
+{noformat}
+PUT /student
+{noformat}
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Query*|*birthday*\\ \\ _可选_||生日||string (date-time)|
+|*Query*|*birthplace*\\ \\ _可选_||籍贯||string|
+|*Query*|*id*\\ \\ _可选_||学号||integer (int32)|
+|*Query*|*name*\\ \\ _可选_||姓名||string|
+|*Query*|*score*\\ \\ _可选_||成绩||integer (int32)|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||无内容|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/student
+{code}
+
+
+h6. 请求 query
+{code:language=json}
+{
+  "birthday" : "string",
+  "birthplace" : "string",
+  "id" : 0,
+  "name" : "string",
+  "score" : 0
+}
+{code}
+
+
+h4. 查询单个学生信息 {anchor:findstudentbyidusingget}
+{noformat}
+GET /student/{id}
+{noformat}
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Path*|*id*\\ \\ _必填_||id||integer (int32)|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||[Student|#student]|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Not Found||无内容|
+
+
+h5. 生成
+
+* {noformat}*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/student/0
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+{
+  "birthday" : "string",
+  "birthplace" : "string",
+  "id" : 0,
+  "name" : "string",
+  "score" : 0
+}
+{code}
+
+
+h4. 删除学生信息 {anchor:deletestudentbyidusingdelete}
+{noformat}
+DELETE /student/{id}
+{noformat}
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Path*|*id*\\ \\ _必填_||id||integer (int32)|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||无内容|
+|*204*||No Content||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+
+
+h5. 生成
+
+* {noformat}*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/student/0
+{code}
+
+
+h4. 查询所有学生信息 {anchor:findallstudentusingget}
+{noformat}
+GET /students
+{noformat}
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||< [Student|#student] > array|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Not Found||无内容|
+
+
+h5. 生成
+
+* {noformat}*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/students
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+[ {
+  "birthday" : "string",
+  "birthplace" : "string",
+  "id" : 0,
+  "name" : "string",
+  "score" : 0
+} ]
+{code}
+
+
+
