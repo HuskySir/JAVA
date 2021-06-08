@@ -587,9 +587,9 @@ set中的值是不能重复的
 6) 3.0
 ```
 
-ZRANGEBYSCORE：按升序显示元素
+> ZRANGEBYSCORE：按升序显示元素
 
-ZREVRANGE：按降序显示元素
+> ZREVRANGE：按降序显示元素
 
 ```bash
 127.0.0.1:6379> ZADD salary 500 zhangsan
@@ -2890,7 +2890,7 @@ pub/sub从字面上理解就是发布(Publish)与订阅(subscribe)，在Redis中
 
 ### 3、环境准备
 
-(1) 在redis目录下新建redis.6380.conf、redis.6381.conf、redis.6382.conf三个文件及logs文件夹，我的redis目录为(E:\Environment\Redis-x64-3.2.100)，
+(1) 在redis目录下新建redis.6380.conf、redis.6381.conf、redis.6382.conf三个文件及logs文件夹，我的redis目录为(E:\Environment\Redis-x64-3.2.100)
 
 ![](./Images/10_2.png)
 
