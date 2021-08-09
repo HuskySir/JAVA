@@ -1024,7 +1024,7 @@ public class StudentController {
 
 [MySQL](https://www.mysql.com/downloads/)（建议安装MySQL8版本）
 
-[Navicat for MySQL](https://www.mysql.com/downloads/)
+[Navicat for MySQL](http://www.navicat.com.cn/download/navicat-for-mysql)
 
 **1.pom.xml**
 
