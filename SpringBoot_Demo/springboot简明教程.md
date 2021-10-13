@@ -366,7 +366,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
 | 修改 | updateStudent?id=xxx&xxx=xxx | student/{id}---PUT    |
 | 删除 | deleteStduent?id=1           | stduent/{id}---DELETE |
 
-普通的CRUD用的是易于理解的请求路径，如getStudent（获取学生，GET请求）、addStudent（添加学生，GET请求）？xxx
+普通的CRUD用的是易于理解的请求路径，如getStudent（获取学生，GET请求）、addStudent（添加学生，POST请求）？xxx
 
 RestFul风格的CRUD可以使用同名的请求路径，通过不同的请求方式来区分具体的请求：如查询与添加请求路径都是.../student，但GET方法是查询，POST方法是添加。将url视为资源，根据**HTTP请求方式（HTTP协议的内容）**对资源产生不同的操作GET是查询、POST是添加、PUT是更新、DELETE是删除。
 
